@@ -1,4 +1,5 @@
 import type { Project } from '../content/types'
+import { projectPath } from '../lib/router'
 import './ProjectsSection.css'
 
 interface ProjectsSectionProps {
@@ -17,6 +18,11 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
+          {project.details && (
+            <p className="projects__more">
+              <a href={projectPath(project.id)}>View project →</a>
+            </p>
+          )}
           <ul className="projects__tech" aria-label="Technologies">
             {project.technologies.map((tech) => (
               <li key={tech}>{tech}</li>

@@ -31,6 +31,22 @@ export const experience: Experience[] = [
       'Implemented multi-channel chat support within the application, enabling customer conversations across Email, Slack, WhatsApp, real-time chat, and support portals.',
       'Led a team of engineers in developing a comprehensive ticket management solution, integrating automated routing, SLA tracking, and CSAT measurement.',
     ],
+    details: {
+      overview: [
+        'Four-plus years at DevRev, joining early enough to shape one of the product’s four core quadrants from a blank page. The support quadrant grew from an idea into a full customer-support suite competing with established players — and I owned major pieces of it end to end.',
+        'The most technically interesting chapter was the agent orchestration platform: a system for composing AI agents from reusable skills, executing them durably on Temporal so multi-step agent runs survive crashes and restarts, and grounding them in customer data through unified search over knowledge bases and systems of record.',
+        'That platform powered the deflection agent — an autonomous support agent that resolved customer requests before a human ever saw them, cutting manual ticket volume by roughly 70% — and the support copilot, which sat beside human agents suggesting next-best actions, related tickets and relevant knowledge.',
+      ],
+      features: [
+        'Support quadrant — launched as a core product offering',
+        'Agent orchestration platform with durable execution on Temporal',
+        'Deflection agent — ~70% reduction in manual ticket volume',
+        'Support copilot with contextual next-best-action suggestions',
+        'Multi-channel support: Email, Slack, WhatsApp, chat, portals',
+        'Ticket management: automated routing, SLA tracking, CSAT',
+      ],
+      links: [{ label: 'devrev.ai', url: 'https://devrev.ai' }],
+    },
   },
   {
     id: 'razorpay',

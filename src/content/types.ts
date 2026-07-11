@@ -64,6 +64,8 @@ export interface Experience {
   /** 'YYYY-MM', or null while ongoing. */
   end: string | null
   highlights: string[]
+  /** When present, the entry gets a dedicated page at #/experience/<id>. */
+  details?: DetailContent
 }
 
 export interface Project {
@@ -73,6 +75,61 @@ export interface Project {
   description: string[]
   technologies: string[]
   links?: { label: string; url: string }[]
+  /** When present, the project gets a dedicated page at #/projects/<id>. */
+  details?: DetailContent
+}
+
+/* ---- Rich detail pages ------------------------------------------------- */
+
+export type Platform = 'macos' | 'windows' | 'linux' | 'android' | 'ios' | 'web'
+
+/** One downloadable build of a project. */
+export interface DownloadOption {
+  platform: Platform
+  label: string
+  url: string
+  /** e.g. '.zip', '.dmg', '.AppImage' */
+  format?: string
+  /** e.g. '12 MB' */
+  size?: string
+}
+
+export interface CodeSnippet {
+  /** Informational only (shown as a badge); no highlighting dependency. */
+  language?: string
+  code: string
+}
+
+export interface TutorialStep {
+  title: string
+  body?: string[]
+  code?: CodeSnippet
+  /** Callout rendered below the step, for tips and gotchas. */
+  note?: string
+}
+
+export interface Tutorial {
+  /** Heading override; defaults to 'Tutorial'. */
+  title?: string
+  intro?: string[]
+  steps: TutorialStep[]
+}
+
+export interface DetailLink {
+  label: string
+  url: string
+}
+
+/**
+ * Everything a dedicated detail page can show. All blocks except
+ * `overview` are optional — the page renders only what the data provides.
+ */
+export interface DetailContent {
+  overview: string[]
+  features?: string[]
+  downloads?: DownloadOption[]
+  tutorial?: Tutorial
+  links?: DetailLink[]
 }
 
 export interface SkillGroup {

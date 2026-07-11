@@ -1,5 +1,6 @@
 import type { Experience } from '../content/types'
 import { formatDuration, formatRange } from '../lib/format'
+import { experiencePath } from '../lib/router'
 import './ExperienceSection.css'
 
 interface ExperienceSectionProps {
@@ -38,6 +39,11 @@ export function ExperienceSection({ items }: ExperienceSectionProps) {
                 <li key={highlight}>{highlight}</li>
               ))}
             </ul>
+            {item.details && (
+              <p className="experience__more">
+                <a href={experiencePath(item.id)}>More about this role →</a>
+              </p>
+            )}
           </div>
         </li>
       ))}
