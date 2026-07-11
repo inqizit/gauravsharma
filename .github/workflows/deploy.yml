@@ -33,8 +33,9 @@ jobs:
 
       - name: Publish dist/ to gh-pages branch
         run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
           npx gh-pages -d dist --nojekyll \
-            -u "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>" \
             -r "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
