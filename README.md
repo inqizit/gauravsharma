@@ -17,15 +17,17 @@ make clean      # remove dist/ and node_modules/
 ## Deploying to GitHub Pages
 
 Every push (or PR merge) to `main` auto-deploys via GitHub Actions
-([.github/workflows/deploy.yml](.github/workflows/deploy.yml)): it builds the
-site and force-pushes `dist/` to the `gh-pages` branch.
+([.github/workflows/deploy.yml](.github/workflows/deploy.yml)) using the
+official Pages actions (`upload-pages-artifact` → `deploy-pages`).
+`make deploy` triggers the same workflow manually (needs the GitHub CLI).
 
-`make deploy` does the same thing manually from your machine (via the
-[gh-pages](https://www.npmjs.com/package/gh-pages) package).
-To serve it, enable Pages once in the repo settings:
-**Settings → Pages → Deploy from a branch → `gh-pages` / `/ (root)`** —
-the site then lives at <https://inqizit.github.io/gauravsharma/>.
-Vite's `base` is set to `./` so assets resolve under that sub-path.
+One-time repo setup: **Settings → Pages → Source = GitHub Actions**.
+
+Custom domain: `gaurav.inqizit.in` is set in the Pages settings, and DNS for
+`inqizit.in` is managed in **Cloudflare** — a `CNAME` record `gaurav` →
+`inqizit.github.io`, proxy status **DNS only**. Vite's `base` is `./` so the
+build also works when served from the `inqizit.github.io/gauravsharma/`
+sub-path.
 
 ## Architecture
 

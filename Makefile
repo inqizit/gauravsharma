@@ -20,8 +20,8 @@ preview: ## Serve the production build locally
 typecheck: ## Type-check without emitting a build
 	npx tsc -b
 
-deploy: ## Build and push dist/ to the gh-pages branch
-	npm run deploy
+deploy: ## Trigger the GitHub Actions Pages deploy (needs gh CLI)
+	gh workflow run deploy.yml && gh run watch $$(sleep 3; gh run list --workflow deploy.yml --limit 1 --json databaseId --jq '.[0].databaseId')
 
 clean: ## Remove build output and dependencies
 	rm -rf dist node_modules
