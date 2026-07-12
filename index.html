@@ -3,10 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="" />
+    <meta
+      name="description"
+      content="Gaurav Sharma — engineer building AI agent platforms. Currently Member of Technical Staff at Emergent."
+    />
     <title>Gaurav Sharma</title>
-    <script type="module" crossorigin src="./assets/index--GxnUFkY.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-al1QjZND.css">
+
+    <!-- Web fonts used by the themes (see src/content/themes.ts). -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:wght@500;600;700&family=Sora:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    />
+
+    <!--
+      Paint the stored theme's background + mode before React mounts so a
+      reload doesn't flash the default theme. The full theme is applied by
+      lib/theme.ts once the app hydrates.
+    -->
+    <script>
+      (function () {
+        try {
+          var raw = localStorage.getItem('gs-theme-boot')
+          if (!raw) return
+          var boot = JSON.parse(raw)
+          var el = document.documentElement
+          if (boot.bg) el.style.background = boot.bg
+          if (boot.mode) {
+            el.style.colorScheme = boot.mode
+            el.setAttribute('data-mode', boot.mode)
+          }
+        } catch (e) {
+          /* storage unavailable — the app applies the default theme on mount */
+        }
+      })()
+    </script>
+    <script type="module" crossorigin src="./assets/index-YMEDmLsl.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CzHZb2Z2.css">
   </head>
   <body>
     <div id="root"></div>
